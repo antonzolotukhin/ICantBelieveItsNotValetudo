@@ -50,7 +50,8 @@ A basic example configuration would look like this:
         "caPath": "",
         "mapDataTopic": "valetudo/robot/MapData/map-data",
         "minMillisecondsBetweenMapUpdates": 10000,
-        "publishMapImage": true
+        "publishMapImage": true,
+        "publishAsBase64": false
     },
     "webserver": {
         "enabled": false,
@@ -59,13 +60,13 @@ A basic example configuration would look like this:
 }
 ```
 
-## Integration with FHEM, ioBroker, etc
+## Integration with FHEM, ioBroker, openHAB etc
 If you set `webserver.enabled` to `true`, the map PNG will be available
 at `http://host:port/api/map/image` so you can display a map with any
 home automation software that allows fetching images from a URL.
 The map will also be available as base64-encoded string at 
 `http://host:port/api/map/base64`.
-By default, the image data is published via MQTT to `mqtt.topicPrefix/mqtt.identifier/MapData/map`.
+By default, the image data is published via MQTT to `mqtt.topicPrefix/mqtt.identifier/MapData/map`, if `mqtt.publishAsBase64` is set to `true`, the image data is published as base64-encoded string (a.e. for openHAB).
 
 
 ## Advanced Map Configuration
@@ -130,6 +131,29 @@ Since new Valetudo maps are using segments, new field in config has been added (
             "segments": ["#000000", "FF0000", "00FF00", "0000FF"],
             "path": "#FFFFFF"
         }
+    },
+    "mqtt" : {
+    }
+
+}
+```
+#### Cropping and padding
+
+You can crop the image or add padding to better fit your use case. the cropping is applied first so you can also remove artefacts that can appear with windows or other reflective surfaces.
+
+
+``` json
+{
+
+    "mapSettings": {
+        "crop_top": 695,
+        "crop_bottom": 0,
+        "crop_left": 150,
+        "crop_right": 200,
+        "padding_top": 150,
+        "padding_bottom": 150,
+        "padding_right": 50,
+        "padding_left": 50
     },
     "mqtt" : {
     }

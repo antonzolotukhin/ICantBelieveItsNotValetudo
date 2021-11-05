@@ -1,3 +1,12 @@
+# This is CI for automatically build docker images of [ICantBelieveItsNotValetudo](https://github.com/Hypfer/ICantBelieveItsNotValetudo)
+Images can be found at Docker Hub: [ptmn/icantbelieveitsnotvaletudo](https://hub.docker.com/repository/docker/ptmn/icantbelieveitsnotvaletudo)
+
+```bash
+docker run ptmn/icantbelieveitsnotvaletudo
+```
+
+---
+
 <div align="center">
     <a href="https://github.com/Hypfer/Valetudo">
         <img src="https://github.com/Hypfer/Valetudo/blob/master/assets/logo/valetudo_logo_with_name.svg" width="800" alt="valetudo">
